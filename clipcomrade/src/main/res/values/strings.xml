@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Clip Comrade</string>
+    <string name="title_activity_clip">Clip Comrade</string>
+    <string name="action_settings">Settings</string>
+    <string name="matches_found">Found Matches in Clip</string>
+    <string name="matches_summary">%d matches found</string>
+
+</resources>
