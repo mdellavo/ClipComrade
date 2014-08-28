@@ -21,16 +21,16 @@ public class ClipActivity extends ListActivity {
 
         ClipService.start(this);
 
+        setContentView(R.layout.activity_clip);
+
         final Intent intent = getIntent();
-        if (intent == null || !intent.hasExtra(ClipService.EXTRAS_MATCHES)) {
-            finish();
-            return;
+        if (intent.hasExtra(ClipService.EXTRAS_MATCHES)) {
+            final List<ClipMatcher.Match> matches = (List<ClipMatcher.Match>) intent.getSerializableExtra(ClipService.EXTRAS_MATCHES);
+            final List<ClipLauncher.Launcher> launchers = ClipLauncher.query(this, matches);
+            final Adapter adapter = new Adapter(this, launchers);
+            setListAdapter(adapter);
         }
 
-        final List<ClipMatcher.Match> matches = (List<ClipMatcher.Match>) intent.getSerializableExtra(ClipService.EXTRAS_MATCHES);
-        final List<ClipLauncher.Launcher> launchers = ClipLauncher.query(this, matches);
-        final Adapter adapter = new Adapter(this, launchers);
-        setListAdapter(adapter);
     }
 
     static class Holder {
